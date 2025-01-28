@@ -22,7 +22,7 @@ class Copier:
             dest = f"{self.destination}/{self.name}{str(i).zfill(len(self.start_num))}.{self.extension}"
             self.cur += 1
 
-            shutil.copyfile(self.file_path, dest)
+            shutil.copy2(self.file_path, dest, follow_symlinks=True)
             for handler in self.handlers:
                 handler.get_file(dest, self.extension, i)
 
